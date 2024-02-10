@@ -5,6 +5,8 @@ const modal = document.querySelector('.modal-overlay');
 const newBookButton = document.querySelector('.newBook-btn');
 const closeModalButton = document.querySelector('.close-modal-btn');
 
+
+
 const body = document.body;
 const themeCheckbox = document.getElementById('theme');
 
@@ -65,12 +67,44 @@ form.addEventListener('submit', function (e) {
     const book = new Book(title, author, pages, isRead);
 
     myLibrary.push(book);
-    console.log(myLibrary);
+    
+    
+    // console.log(myLibrary);
+    displayBook();
 
-
+    form.reset();
+    closeModal();
 });
 
+function displayBook() {
+  const listBooks = document.querySelector('.list-books');
+  listBooks.innerHTML = "";
 
+  if(myLibrary.length > 0) {
+    showEmptyState(false);
+  }
+
+  // console.log(myLibrary);
+  myLibrary.forEach((book, index) => {
+    const cardBook = `<article class="card" index="${index}">
+                    <div class="read-status ${book.isRead}"
+                      id="read-status">
+                    </div>
+                      <h2 class="book-title">${book.title}</h2>
+                      <p class="author">${book.author}</p>
+                      
+                      <footer class="card-footer">
+                        <div class="pages-info">
+                          <i class="ph-bold ph-book-open-text"></i>
+                          <span>${book.pages} page(s)</span>
+                        </div>
+                      </footer>
+                  <article>`;
+                  listBooks.insertAdjacentHTML("beforeend", cardBook);
+  })
+
+
+}
 
 function Book(title, author, pages, isRead) {
   // the constructor...
@@ -90,3 +124,4 @@ function showEmptyState(show) {
   const emptyState = document.querySelector('.emptyShelf');
   emptyState.style.display = show ? 'flex' : 'none';
 }
+
