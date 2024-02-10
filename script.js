@@ -71,7 +71,7 @@ form.addEventListener('submit', function (e) {
 
 function displayBook() {
   const listBooks = document.querySelector('.list-books');
-  // listBooks.innerHTML = "";
+  listBooks.innerHTML = "";
 
   if(myLibrary.length > 0) {
     showEmptyState(false);
@@ -79,9 +79,13 @@ function displayBook() {
   // console.log(myLibrary);
   myLibrary.forEach((book, index) => {
     const cardBook = `<article class="card" index="${index}">
-                    <div class="read-status ${book.isRead}"
-                      id="read-status">
-                    </div>
+    <label class="Switch">Read
+    <div class="Switch-inner">
+      <input type="checkbox">
+      <div class="Switch-bg"></div>
+      <div class="Switch-handle"></div>
+    </div>
+  </label>
                       <h2 class="book-title">${book.title}</h2>
                       <p class="author">${book.author}</p>
                       

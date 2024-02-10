@@ -272,7 +272,7 @@ h1, p {
 }
 .card {
     padding: 10px; 
-    height: 200px;
+    height: 230px;
     width: 230px;
     background: var(--day-background);
     margin: 0 auto;
@@ -280,6 +280,20 @@ h1, p {
     color: SteelBlue;
     top: -150px;
     left: 200px;
+  }
+  .read-status {
+    visibility: hidden;
+    font-size: 0.75rem;
+    display: flex;
+    
+    gap: 0.5rem;
+    color: var(--green-300);
+  }
+  .show-read-status {
+    visibility: visible;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
   }
   #remove-book {
     background: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
@@ -334,3 +348,32 @@ h1, p {
 .pages-info .ph-book-open-text {
     font-size: 45px;
   }
+
+  .Switch {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
