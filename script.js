@@ -90,10 +90,26 @@ function displayBook() {
                           <i class="ph-bold ph-book-open-text"></i>
                           <span>${book.pages} page(s)</span>
                         </div>
+                        
+                        <button onclick="removeBook(${book.id})" class="btn" id="remove-book">Remove</button>
+
                       </footer>
                   <article>`;
                   listBooks.insertAdjacentHTML("beforeend", cardBook);
   });
+}
+
+function removeBook(bookId){
+  myLibrary = myLibrary.filter((book) => book.id !== bookId.toString());
+  setBooksToLocalStorage(myLibrary);
+
+  if (myLibrary.length > 0) {
+    displayBook();
+  } else {
+    showEmptyState(true);
+    const listBooks = document.querySelector(".list-books");
+    listBooks.innerHTML = "";
+  }
 }
 
 function Book(title, author, pages, isRead) {

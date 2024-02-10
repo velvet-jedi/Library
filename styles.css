@@ -271,9 +271,9 @@ h1, p {
     transition: filter 0.3s ease;   
 }
 .card {
-    padding: 1rem; 
+    padding: 10px; 
     height: 200px;
-    width: 200px;
+    width: 230px;
     background: var(--day-background);
     margin: 0 auto;
     border-radius: 20px;
@@ -281,7 +281,13 @@ h1, p {
     top: -150px;
     left: 200px;
   }
-  
+  #remove-book {
+    background: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 5px;
+    color: SteelBlue;
+  }
   .list-books {
     margin-top: 1rem;
     display: grid;
@@ -303,7 +309,7 @@ h1, p {
   }
   
 .card .book-title {
-    margin-top: 2rem;
+    
     font-size: 1.5rem;
   }
 .card .author {
@@ -311,9 +317,10 @@ h1, p {
     color: var(--gray-300);
   }
 .card .card-footer {
-    margin-top: 1.5rem;
+    margin-top: 15px;
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 10px;
     align-items: center;
     justify-content: center;
 }
