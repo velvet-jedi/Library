@@ -1,16 +1,13 @@
-const myLibrary = [];
+// const myLibrary = [];
+let myLibrary = [];
 
 const modal = document.querySelector('.modal-overlay');
 // modal buttons
 const newBookButton = document.querySelector('.newBook-btn');
 const closeModalButton = document.querySelector('.close-modal-btn');
 
-
-
 const body = document.body;
 const themeCheckbox = document.getElementById('theme');
-
-
 
 // form
 const form = document.getElementById('new-book-form');
@@ -29,7 +26,6 @@ function closeModal() {
     modal.classList.add("show-modal");
     blurElements.forEach(el => {
       el.classList.add('blur');
-      // body.style.background='var(--day-background)';
     }); 
 
     body.style.background = themeCheckbox.checked ? 'var(--night-background)' : 'var(--day-background)';
@@ -44,7 +40,6 @@ function closeModal() {
 
 newBookButton.addEventListener("click", () => {
     openModal();
-
 });
 
 closeModalButton.addEventListener("click", () => {
@@ -54,7 +49,6 @@ closeModalButton.addEventListener("click", () => {
 closeFormButton.addEventListener("click", () => {
     closeModal();
 });
-
 
 form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -67,9 +61,8 @@ form.addEventListener('submit', function (e) {
     const book = new Book(title, author, pages, isRead);
 
     myLibrary.push(book);
+    setBooksToLocalStorage(myLibrary);
     
-    
-    // console.log(myLibrary);
     displayBook();
 
     form.reset();
@@ -78,12 +71,11 @@ form.addEventListener('submit', function (e) {
 
 function displayBook() {
   const listBooks = document.querySelector('.list-books');
-  listBooks.innerHTML = "";
+  // listBooks.innerHTML = "";
 
   if(myLibrary.length > 0) {
     showEmptyState(false);
   }
-
   // console.log(myLibrary);
   myLibrary.forEach((book, index) => {
     const cardBook = `<article class="card" index="${index}">
@@ -101,9 +93,7 @@ function displayBook() {
                       </footer>
                   <article>`;
                   listBooks.insertAdjacentHTML("beforeend", cardBook);
-  })
-
-
+  });
 }
 
 function Book(title, author, pages, isRead) {
@@ -115,8 +105,8 @@ function Book(title, author, pages, isRead) {
   this.id = new Date().getTime().toString();
 }
 
-function addBookToLibrary() {
-  // do stuff here
+function setBooksToLocalStorage (myLibrary) {
+  localStorage.setItem("@my-books:list", JSON.stringify(myLibrary));
 }
 
 
@@ -125,3 +115,10 @@ function showEmptyState(show) {
   emptyState.style.display = show ? 'flex' : 'none';
 }
 
+(function () {
+  const listBooks = JSON.parse(localStorage.getItem("@my-books:list"));
+  if(listBooks){
+    myLibrary = listBooks;
+    displayBook();
+  }
+})();
