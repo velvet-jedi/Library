@@ -194,8 +194,8 @@ h1, p {
   }
 
   .close-modal-btn {
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
   
     display: flex;
     align-items: center;
@@ -206,6 +206,10 @@ h1, p {
     
     right: 7rem;
   } 
+  .close-modal-btn:hover {
+    background-color: #fd5c63;
+    transition: all 0.1s ease-in-out;
+  }
   .btn {
     background: var(--gray-100);
     cursor: pointer;
