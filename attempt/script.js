@@ -54,8 +54,20 @@ closeFormButton.addEventListener("click", () => {
 });
 
 
-form.addEventListener('submit', function (event) {
-    event.preventDefault();
+form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const title = document.getElementById("title").value;
+    const author = document.getElementById("author").value;
+    const pages = document.getElementById("pages").value;
+
+    const isRead = document.getElementById("read").checked;
+    const book = new Book(title, author, pages, isRead);
+
+    myLibrary.push(book);
+    console.log(myLibrary);
+
+
 });
 
 
