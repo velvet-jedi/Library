@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookshelf</title>
+    <!-- styling -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dark.css">
+    <!-- icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
+    
+</head>
+
+<body>
+
+        <header class="container header blurry">
+            <h1 class="title">Bookshelf</h1>
+            <nav class="navbar">
+                <button id="newBook-btn" class="newBook-btn">
+                    <i class="ph ph-plus"></i>Add book
+                </button>
+            </nav>
+            
+            <div class="dark-theme">
+                <input type="checkbox" id="theme" class="toggle--checkbox">
+                <label for="theme" class="toggle--label">
+                    <span class="toggle--label-background"></span>
+                </label>
+                <div class="background"></div>
+            </div>
+
+        </header>
+        
+        <div class="emptyShelf blurry">
+            <i class="ph ph-books" id="shelf-icon"></i>
+            <p>Your bookshelf looks lonely 🥺</p>
+        </div>
+        
+    
+
+       <section class="list-books"></section>
+
+       <div class="modal-overlay">
+            
+                <div class="form-container">
+                    <div class="row">
+                        <h3 class="form-title">New book</h3>
+                        <button id="close-modal-btn" class="close-modal-btn btn">
+                            <i class="ph-bold ph-x"></i>
+                        </button>
+                    </div>
+                    <form id="new-book-form">
+                        <div class="form-control">
+                            <label for="title">Title</label>
+                            <input placeholder="Book name" type="text" name="title" id="title" required>
+                        </div>
+                        <div class="form-control">
+                            <label for="author">Author</label>
+                            <input placeholder="Author name" type="text" name="author" id="author" required>
+                        </div>
+                        <div class="form-control">
+                            <label for="pages">Pages</label>
+                            <input placeholder="200" type="number" name="pages" id="pages" required>
+                        </div>
+                        <div class="form-control read">
+                            <div class="checkbox-container">
+                            <label for="read">Finished</label>
+                                <input type="checkbox" id="read" name="read">
+                            </div>
+                        </div>
+                        <footer class="form-footer">
+                            <button class="submit btn" type="submit" autofocus>
+                                Save
+                            </button>
+                            <button id="close-form-btn" type="button" class="btn">
+                                Cancel
+                            </button>
+                        </footer>
+                    </form>
+                </div>
+            </div>
+       
+        
+
+    <script src="script.js"></script>
+</body>
+</html>
