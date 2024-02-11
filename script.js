@@ -79,9 +79,9 @@ function displayBook() {
   // console.log(myLibrary);
   myLibrary.forEach((book, index) => {
     const cardBook = `<article class="card" index="${index}">
-    <label class="Switch">Read
+    <label class="Switch">Finished
     <div class="Switch-inner">
-      <input type="checkbox">
+      <input type="checkbox" ${book.isRead ? 'checked' : ''} onchange="toggleRead(${index})">
       <div class="Switch-bg"></div>
       <div class="Switch-handle"></div>
     </div>
@@ -125,7 +125,7 @@ function Book(title, author, pages, isRead) {
   this.id = new Date().getTime().toString();
 }
 
-function setBooksToLocalStorage (myLibrary) {
+function setBooksToLocalStorage(myLibrary) {
   localStorage.setItem("@my-books:list", JSON.stringify(myLibrary));
 }
 
@@ -133,6 +133,11 @@ function setBooksToLocalStorage (myLibrary) {
 function showEmptyState(show) {
   const emptyState = document.querySelector('.emptyShelf');
   emptyState.style.display = show ? 'flex' : 'none';
+}
+
+function toggleRead(index) {
+  myLibrary[index].isRead = !myLibrary[index].isRead;
+  setBooksToLocalStorage(myLibrary);
 }
 
 (function () {
