@@ -1,3 +1,16 @@
+
+// classes need to be defined before their usage
+class Book {
+  constructor(title, author, pages, isRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = isRead;
+    this.id = new Date().getTime().toString(); 
+  }
+}
+
+
 // const myLibrary = [];
 let myLibrary = [];
 
@@ -116,14 +129,14 @@ function removeBook(bookId){
   }
 }
 
-function Book(title, author, pages, isRead) {
-  // the constructor...
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = isRead;
-  this.id = new Date().getTime().toString();
-}
+// function Book(title, author, pages, isRead) {
+//   // the constructor...
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.isRead = isRead;
+//   this.id = new Date().getTime().toString();
+// }
 
 function setBooksToLocalStorage(myLibrary) {
   localStorage.setItem("@my-books:list", JSON.stringify(myLibrary));
@@ -147,3 +160,4 @@ function toggleRead(index) {
     displayBook();
   }
 })();
+
